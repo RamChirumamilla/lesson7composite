@@ -1,0 +1,28 @@
+
+  name: ramu composite action
+  description: Calculator to test composite action
+  inputs: 
+    number1: 
+      required: true
+      default: 0
+    number2:
+      required: true
+      default: 1
+  outputs:
+    result:
+      value: ${{ steps.sum-result.outputs.result }}
+
+  runs:
+    # For more on composite actions, see:
+    # https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-composite-action
+    using: composite
+    steps:
+      - shell: bash
+        id: sum-result
+        run: |
+          num1 =${{inputs.number1}}
+          num2=${{inputs.number2}}
+          result=$((num1+num2))
+          echo "result=$result" >> "$GITHUB_OUTPUT"
+        
+    
