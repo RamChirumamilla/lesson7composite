@@ -7,7 +7,7 @@ jobs:
     name: job to test compisite action
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v7.0.1
+      - uses: actions/checkout@v7.0.1
       - uses: ./
         id: compositeAction
         with:
