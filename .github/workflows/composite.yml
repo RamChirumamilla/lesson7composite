@@ -1,0 +1,16 @@
+name: ramu-comosite-actions-test
+
+on: push
+
+jobs:
+  composite-action:
+    name: job to test compisite action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/Checkout@v7.0.1
+      - uses: ./
+        id: compositeAction
+        with:
+          number1: 5
+          number2: 6
+      - run: echo $${{steps.compositeAction.outputs.result}}
